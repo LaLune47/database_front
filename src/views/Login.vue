@@ -59,33 +59,36 @@ export default {
   created() {},
   methods: {
     async submitForm() {
-      // 登录表单校验
+      //登录表单校验
       for (var i in this.param) {
         if (this.param[i].trim().length == 0)
           return this.$message.error(this.paramTitle[i] + '未填写')
       }
 
-      try {
-        const { data: res } = await this.$http.post("api/login/", this.param);
-        //console.log(res)
-        if (res.success == false) {
-          this.$message.error(res.message);
-        } else {
-          this.$store.commit("login", { userName: this.param.userName, userID: res.userID });//注意一下，store貌似只能传一个参数，建议传个对象过去。
-          //获取存入的userID的方式：this.$store.state.userID   (注意是this.$store.state.XXX，千万别落什么东西)
-          //console.log(this.$store.state)
-          this.$message.success(res.message);
-          this.$router.push({ path: "/home" });
-        }
-      } catch (error) {
-        this.$message.error("网络异常");
-      }
+      // try {
+      //   const { data: res } = await this.$http.post("api/login/", this.param);
+      //   //console.log(res)
+      //   if (res.success == false) {
+      //     this.$message.error(res.message);
+      //   } else {
+      //     this.$store.commit("login", { userName: this.param.userName, userID: res.userID });//注意一下，store貌似只能传一个参数，建议传个对象过去。
+      //     //获取存入的userID的方式：this.$store.state.userID   (注意是this.$store.state.XXX，千万别落什么东西)
+      //     //console.log(this.$store.state)
+      //     this.$message.success(res.message);
+      //     this.$router.push({ path: "/home" });
+      //   }
+      // } catch (error) {
+      //   this.$message.error("网络异常");
+      // }
       
       // this.$store.commit('login', {
       //   userName: this.param.userName,
       //   userID: 'admin_id'
       // }) //res,后端来的
-      // this.$router.push({ path: '/home' })
+
+      // front_test
+      this.$store.commit("login", {userID: "qmy12345"} );
+      this.$router.push({ path: '/home' })
     }
   }
 }

@@ -19,6 +19,7 @@
             <UserOutlined/>
             <span v-if="collapsed">个人中心</span>
           </template>
+
           <a-menu-item key="1">
             <router-link
                 to="/home/userinfo"
@@ -27,36 +28,41 @@
               个人信息
             </router-link>
           </a-menu-item>
+          
           <a-menu-item key="2">
+            <router-link
+                to="/home/orderquery"    
+                replace
+            >
+              我的送单
+            </router-link>
+          </a-menu-item>
+
+          <a-menu-item key="20">
             <router-link
                 to="/home/orderquery"
                 replace
             >
-              我的订单
+              我的点单
             </router-link>
           </a-menu-item>
+
           <a-menu-item key="3">
             <router-link
                 to="/home/userstar"
                 replace
             >
-              我的最爱
+              我的收藏夹
             </router-link>
           </a-menu-item>
-          <!-- <a-menu-item key="3">
-            <router-link
-                to="/home/userstar"
-                replace
-            >
-              我的最爱
-            </router-link>
-          </a-menu-item> -->
+
           <a-menu-item
               key="6"
               @click="visible=true;"
           >
             用户注销
           </a-menu-item>
+
           <a-menu-item
               key="7"
               @click="$store.commit('logout')"
@@ -65,58 +71,56 @@
               用户登出
             </router-link>
           </a-menu-item>
+
         </a-sub-menu>
+
 
         <a-sub-menu key="sub2">
           <template v-slot:title>
             <a-icon type="desktop"/>
             <ShoppingCartOutlined/>
-            <span v-if="collapsed">商铺</span>
+            <span v-if="collapsed">开始点菜</span>
           </template>
+
           <a-menu-item key="11">
             <router-link
                 to="/home/restaurants"
                 replace
             >
-              所有餐厅
+              餐厅列表
             </router-link>
           </a-menu-item>
+
           <a-menu-item key="12">
             <router-link
                 to="/home/hotfood"
                 replace
             >
-              热菜榜单
+              菜品列表
             </router-link>
           </a-menu-item>
+
         </a-sub-menu>
         
         <a-sub-menu key="sub3">
           <template v-slot:title>
             <a-icon type="team"/>
             <CarOutlined/>
-            <span v-if="collapsed">订单查询</span>
+            <span v-if="collapsed">订单</span>
           </template>
-          <a-menu-item key="16">
-            <router-link
-                to="/home/ordernow"
-                replace
-            >
-              我接的单
-            </router-link>
-          </a-menu-item>
+
           <a-menu-item key="17">
             <router-link
                 to="/home/orders"
                 replace
             >
-              全部订单
+              订单池
             </router-link>
           </a-menu-item>
+
         </a-sub-menu>
     
       </a-menu>
-
     </a-layout-sider>
   </div>
 </template>

@@ -4,14 +4,12 @@ const routes = [
   {
     path: '/',
     redirect: '/login'
-    //输入前面的ip地址+端口号立刻会跳转到/login,可以理解为初始界面
   },
   {
     path: '/login',
-    name: 'Login', //注意，path和name都是绝对不准重复的
+    name: 'Login',
     component: () =>
       import(
-        /* webpackChunkName: "login" */
         '../views/Login.vue'
       )
   },
@@ -21,17 +19,14 @@ const routes = [
     name: 'Register',
     component: () =>
       import(
-        /* webpackChunkName: "login" */
         '../views/Register.vue'
       )
   },
   {
     path: '/home',
     name: 'Home',
-    //redirect: '/home/userinfo',
     component: () =>
       import(
-        /* webpackChunkName: "login" */
         '../views/Home.vue'
       ),
     children: [
@@ -126,23 +121,6 @@ const routes = [
         },
         component: () => import('../views/Orders')
       }
-      // {
-      //   path: 'developmentteam',
-      //   name: 'developmentteam',
-      //   meta: {
-      //     keepAlive: true,
-      //     requireAuth: true
-      //   },
-      //   component: () => import('../views/DevelopmentTeam')
-      // }
-      // {
-      //   path: "",
-      //   name: "",
-      //   meta: {
-      //     keepAlive: true
-      //   },
-      //   component: () => import("")
-      // },
     ]
   }
   // {

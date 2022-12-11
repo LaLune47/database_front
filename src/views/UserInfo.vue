@@ -3,7 +3,6 @@
     <a-spin :spinning="spinning">
       <div class="background">
         <div style="display:flex;justify-content:space-between;align-items: center;overflow:auto;padding:50px;">
-          <my-avatar :user="user" />
           <my-info :user="user" />
         </div>
       </div>
@@ -13,7 +12,6 @@
 <script>
 import { ShoppingTwoTone, PlusCircleTwoTone, MinusCircleTwoTone } from '@ant-design/icons-vue';
 import { defineComponent, ref } from "vue";
-import MyAvatar from '@/components/userinfo/MyAvatar'
 import MyInfo from '@/components/userinfo/MyInfo'
 export default defineComponent({
   data() {
@@ -29,7 +27,6 @@ export default defineComponent({
     // ShoppingTwoTone,
     // PlusCircleTwoTone,
     // MinusCircleTwoTone,
-    MyAvatar,
     MyInfo,
   },
   // setup() {
@@ -76,6 +73,11 @@ export default defineComponent({
           this.user = res
         }
       } catch (error) {
+        // front_test
+        this.user = { userName : "test_userName",
+                      userNickName : "test_userNickName",
+                      userTel : "test_userTel",
+                      userAddress : "test_userAddress",}
         this.$message.error("网络异常");
       } finally {
         this.spinning = false

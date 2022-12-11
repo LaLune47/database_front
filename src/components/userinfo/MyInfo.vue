@@ -143,19 +143,23 @@ export default {
     async handleConfirm() {
       if (this.thisUser.userNickName.trim().length == 0) return this.$message.error("请设置用户昵称");
       if (this.thisUser.userTel.trim().length == 0) return this.$message.error("请设置电话号码");
-      try {
-        this.thisUser.userID = this.$store.state.userID;
-        const { data: res } = await this.$http.post("api/changeInformation/", this.thisUser);
-        if (res.success == false) {
-          this.$message.error(res.message);
-        }
-        else {
-          this.$message.success(res.message);
-          this.editMode = false;
-        }
-      } catch (error) {
-        this.$message.error("网络异常");
-      }
+      
+      // try {
+      //   this.thisUser.userID = this.$store.state.userID;
+      //   const { data: res } = await this.$http.post("api/changeInformation/", this.thisUser);
+      //   if (res.success == false) {
+      //     this.$message.error(res.message);
+      //   }
+      //   else {
+      //     this.$message.success(res.message);
+      //     this.editMode = false;
+      //   }
+      // } catch (error) {
+      //   this.$message.error("网络异常");
+      // }
+      
+      // front_test
+      this.editMode = false;
     },
   },
   watch: {
