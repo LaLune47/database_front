@@ -5,13 +5,33 @@
       style="min-height: 100vh;overflow:auto;"
     >
       <my-menu />
-
+      
       <a-layout>
-        <a-layout-header style="background: #fff; padding: 0">
-          我在这里a-layout-header我在这里a-layout-header
-        </a-layout-header>
-        
         <a-layout-content style="margin: 0 16px;height:100vh;overflow:auto;">
+          <a-breadcrumb style="margin-left:16px;margin-top:16px;">
+            <template
+              v-for="item in path"
+              :key="item"
+            >
+              <a-breadcrumb-item>
+                <span v-if="item.isFather">
+                  {{item.name}}
+                </span>
+                <span
+                  v-else
+                  @click="handleClickBread(item)"
+                >
+                  <router-link
+                    :to="item.to"
+                    replace
+                  >
+                    {{item.name}}
+                  </router-link>
+                </span>
+              </a-breadcrumb-item>
+            </template>
+          </a-breadcrumb>
+
           <router-view v-slot="{ Component }">
             <transition
               name="move"
@@ -24,6 +44,7 @@
           </router-view>
 
         </a-layout-content>
+        
         
       </a-layout>
     </a-layout>

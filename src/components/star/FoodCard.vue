@@ -8,11 +8,11 @@
               foodID: thisFood.foodID,
             },});"
       >
-        <img
+        <!-- <img
           alt="example"
           :src="thisFood.foodUrl"
           style="width:75px;height:75px;margin:0px;border-radius: 10px;"
-        />
+        /> -->
         <div style="margin-left:20px;">
           <div class="name">{{thisFood.foodName}}</div>
           <div class="value">{{thisFood.foodPrice}}</div>
@@ -49,6 +49,7 @@ export default {
   methods: {
     async handleUnstar() {
 
+      // front_test
       try {
         const { data: res } = await this.$http.post("api/unStar/", { userID: this.$store.state.userID, foodID: this.thisFood.foodID });
         if (res.success == false) {
@@ -61,6 +62,7 @@ export default {
       } catch (error) {
         this.$message.error("网络异常");
       }
+      
     },
   },
   watch: {

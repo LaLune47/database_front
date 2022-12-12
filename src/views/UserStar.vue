@@ -58,6 +58,18 @@ export default {
           this.stars = res.userStars
         }
       } catch (error) {
+        // front-test
+        this.stars = {food1: {foodID: "food_id_1234",
+                      foodName: "food_name 示例食物小笼包",
+                      foodPrice: "food_price 示例价格 18",
+                      foodStoreName: "store_name 示例店铺 新北食堂",
+                      foodType: "food_type 示例食物种类 主食",},
+                      food2: {foodID: "food_id_1234",
+                      foodName: "food_name 示例食物小笼包",
+                      foodPrice: "food_price 示例价格 18",
+                      foodStoreName: "store_name 示例店铺 新北食堂",
+                      foodType: "food_type 示例食物种类 主食",}}
+
         this.$message.error("网络异常");
       } finally {
         this.spinning = false
