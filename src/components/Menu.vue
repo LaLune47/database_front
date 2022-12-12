@@ -122,6 +122,11 @@
     
       </a-menu>
     </a-layout-sider>
+
+    <a-modal :visible="visible" title="注销账户" ok-text="确认" cancel-text="取消" @cancel="visible=false;" @ok="deleteUser">
+      <p>请输入您的密码：</p>
+      <input v-model="password" @keyup.enter="deleteUser"/>
+    </a-modal>
   </div>
 </template>
 
@@ -151,25 +156,27 @@ export default defineComponent({
       this.collapsed = !this.collapsed;
     },
     async deleteUser() {
-      try {
-        const {data: res} = await this.$http.post("api/deleteUser/", {
-          userID: this.$store.state.userID,
-          userPassword: this.password
-        });
-         console.log(this.password)
-        //console.log(res)
-        if (res.success == false) {
-          this.$message.error(res.message);
-        } else {
+      // try {
+      //   const {data: res} = await this.$http.post("api/deleteUser/", {
+      //     userID: this.$store.state.userID,
+      //     userPassword: this.password
+      //   });
+      //    console.log(this.password)
+      //   //console.log(res)
+      //   if (res.success == false) {
+      //     this.$message.error(res.message);
+      //   } else {
+      //     this.visible = false;
+      //     this.$message.success(res.message);
+      //     this.$store.commit('logout');
+      //     this.$router.push({path: "/login"});
+      //   }
+      // } catch (error) {
+      //   this.$message.error("网络异常");
+      // }
 
-          this.visible = false;
-          this.$message.success(res.message);
-          this.$store.commit('logout');
-          this.$router.push({path: "/login"});
-        }
-      } catch (error) {
-        this.$message.error("网络异常");
-      }
+      // front_test
+      this.$router.push({path: "/login"})
     },
   },
   components: {
