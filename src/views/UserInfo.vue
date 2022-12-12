@@ -17,7 +17,7 @@ export default defineComponent({
   data() {
     return {
       collapsed: true,
-      user: { userOrders: [], userStars: [], userIconUrl: "", },
+      user: { userOrders: [], userStars: [], },
       columns: [],
       userID: this.$store.state.userID,
       spinning: true,
@@ -74,10 +74,11 @@ export default defineComponent({
         }
       } catch (error) {
         // front_test
-        this.user = { userName : "test_userName",
-                      userNickName : "test_userNickName",
-                      userTel : "test_userTel",
-                      userAddress : "test_userAddress",}
+        this.user = { userName : "test_userName——const",
+                      userAddress: "住址",
+                      userTel: "电话",
+                      userEmail:"邮箱",}
+
         this.$message.error("网络异常");
       } finally {
         this.spinning = false

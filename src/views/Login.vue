@@ -87,7 +87,7 @@ export default {
       // }) //res,后端来的
 
       // front_test
-      this.$store.commit("login", {userID: "qmy12345"} );
+      this.$store.commit("login", { username: "admin", userID: "123456" } );
       this.$router.push({ path: '/home' })
     }
   }

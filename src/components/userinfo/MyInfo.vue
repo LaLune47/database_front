@@ -52,18 +52,20 @@
         readonly
         disabled
       />
-      <div class="prop-name">用户昵称</div>
+
+      <div class="prop-name">住址</div>
       <a-input
         v-if="editMode"
-        v-model:value="thisUser.userNickName"
+        v-model:value="thisUser.userAddress"
         class="prop-value"
       />
       <a-input
         v-else
-        v-model:value="thisUser.userNickName"
+        v-model:value="thisUser.userAddress"
         class="prop-value"
         disabled
       />
+
       <div class="prop-name">电话号码</div>
       <a-input
         v-if="editMode"
@@ -76,28 +78,17 @@
         class="prop-value"
         disabled
       />
-      <div class="prop-name">地址</div>
-      <a-select
-        :default-value="thisUser.userAddress"
+
+      <div class="prop-name">邮箱</div>
+      <a-input
         v-if="editMode"
-        name="userAddress"
-        style="width:100%"
+        v-model:value="thisUser.userEmail"
         class="prop-value"
-        v-model="thisUser.userAddress"
-      >
-        <a-select-option value="学院路-15公寓">学院路-15公寓</a-select-option>
-        <a-select-option value="学院路-13公寓">学院路-13公寓</a-select-option>
-        <a-select-option value="学院路-大运村">学院路-大运村</a-select-option>
-        <a-select-option value="学院路-3公寓">学院路-3公寓</a-select-option>
-        <a-select-option value="学院路-12公寓">学院路-12公寓</a-select-option>
-        <a-select-option value="学院路-20公寓">学院路-20公寓</a-select-option>
-        <a-select-option value="沙河校区">沙河校区</a-select-option>
-      </a-select>
-      <a-select
+      />
+      <a-input
         v-else
-        :default-value="thisUser.userAddress"
+        v-model:value="thisUser.userEmail"
         class="prop-value"
-        style="width:100%"
         disabled
       />
 
@@ -126,23 +117,24 @@ export default {
   methods: {
     handleEdit() {
       this.tempUser.userName = this.thisUser.userName;
-      this.tempUser.userNickName = this.thisUser.userNickName;
-      this.tempUser.userTel = this.thisUser.userTel;
       this.tempUser.userAddress = this.thisUser.userAddress;
+      this.tempUser.userTel = this.thisUser.userTel;
+      this.tempUser.userEmail = this.thisUser.userEmail;
       this.$message.info("已进入编辑模式");
       this.editMode = true;
     },
     handleCancel() {
       this.thisUser.userName = this.tempUser.userName;
-      this.thisUser.userNickName = this.tempUser.userNickName;
-      this.thisUser.userTel = this.tempUser.userTel;
       this.thisUser.userAddress = this.tempUser.userAddress;
+      this.thisUser.userTel = this.tempUser.userTel;
+      this.thisUser.userEmail = this.tempUser.userEmail;
       this.$message.info("已退出编辑模式");
       this.editMode = false;
     },
     async handleConfirm() {
-      if (this.thisUser.userNickName.trim().length == 0) return this.$message.error("请设置用户昵称");
+      if (this.thisUser.userAddress.trim().length == 0) return this.$message.error("请设置住址");
       if (this.thisUser.userTel.trim().length == 0) return this.$message.error("请设置电话号码");
+      if (this.thisUser.userEmail.trim().length == 0) return this.$message.error("请设置邮箱");
       
       // try {
       //   this.thisUser.userID = this.$store.state.userID;

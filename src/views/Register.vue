@@ -14,7 +14,7 @@
               required
               @keyup.enter="checkParam()"
             >
-            <input
+            <!-- <input
               type="text"
               name="userName"
               class="register-param"
@@ -22,7 +22,7 @@
               placeholder="您的昵称"
               required
               @keyup.enter="checkParam()"
-            >
+            > -->
             <input
               id="pw1"
               type="password"
@@ -45,6 +45,15 @@
             >
             <input
               type="text"
+              name="userAddress"
+              class="register-param"
+              v-model="param.userAddress"
+              placeholder="您的住址"
+              required
+              @keyup.enter="checkParam()"
+            >
+            <input
+              type="text"
               name="userTel"
               class="register-param"
               v-model="param.userTel"
@@ -52,8 +61,17 @@
               required
               @keyup.enter="checkParam()"
             >
+            <input
+              type="text"
+              name="userEmail"
+              class="register-param"
+              v-model="param.userEmail"
+              placeholder="您的邮箱"
+              required
+              @keyup.enter="checkParam()"
+            >
             <!--        <input type="text" name="userAddress" class="e" placeholder="您的住址" required>-->
-            <select
+            <!-- <select
               name="userAddress"
               class="register-param"
               v-model="param.userAddress"
@@ -71,7 +89,7 @@
               <option value="学院路-12公寓">学院路-12公寓</option>
               <option value="学院路-20公寓">学院路-20公寓</option>
               <option value="沙河校区">沙河校区</option>
-            </select>
+            </select> -->
             <a-button
               @click="checkParam()"
               style="width:100%;margin-bottom: 10px"
@@ -95,19 +113,21 @@ export default {
     return {
       param: {
         userName: "",
-        userNickname: "",
+        //userNickname: "",
         password1: "",
         password2: "",
-        userTel: "",
         userAddress: "",
+        userTel: "",
+        userEmail: "",
       },
       paramTitle: {
         userName: "用户名",
-        userNickname: "用户昵称",
+        //userNickname: "用户昵称",
         password1: "密码",
         password2: "重复密码",
-        userTel: "电话",
         userAddress: "住址",
+        userTel: "电话",
+        userEmail:"邮箱"
       }
     };
   },
@@ -126,21 +146,23 @@ export default {
       }
       else {
         this.param.userPassword = this.param.password1;
+
         // try {
-        //     向后端请求
-        //   if (请求失败) {
-        //   
+        //   const { data: res } = await this.$http.post("/api/register/", this.param);
+        //   if (res.success == false) {
+        //     this.$message.error(res.message);
         //   }
         //   else {
-        //      注册
-        //      前端存user数据
-        //      登录
+        //     this.$store.commit("login", { username: this.param.username, userID: res.userID });
+        //     this.$message.success(res.message);
+        //     this.$router.push({ path: "/home" });
         //   }
         // } catch (error) {
+        //   this.$message.error("网络异常");
         // }
         
-        // 默认注册(为了实现别的功能，反正不管注册什么，都先)
-        this.$store.commit("login", { username: "admin", userID: "admin_id" });
+        // front_test
+        this.$store.commit("login", { username: "admin", userID: "123456" });
         this.$router.push({ path: "/home" });
       }
 
